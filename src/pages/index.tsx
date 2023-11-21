@@ -12,7 +12,7 @@ import Title from "@/components/common/card/title";
 import PercentagesRow from "@/components/common/percentagesRow";
 import DistanceLabel from "@/components/common/distanceLabel";
 import Button from "@/components/common/card/button";
-import Image from "next/legacy/image";
+import Image from "next/image";
 
 type Props = {
   tourismAccounts: Array<Benefits>;
@@ -83,9 +83,9 @@ export default function Home(props: Props) {
       <FullScreenSliderDesktop>
         {arrayHardcoded.map((slide, index) => (
           <Image
-            width={1000}
-            height={600}
             layout="fixed"
+            width={1000}
+            height={1000}
             key={index}
             src={slide}
             alt="slider-img"
