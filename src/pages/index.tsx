@@ -96,7 +96,7 @@ export default function Home(props: Props) {
       <section className="flex flex-col gap-3 py-4 sm:px-20 md:px-40">
         <div className="flex justify-between items-center mb-4">
           <h4 className="text-xl font-medium">Turismo en Buenos Aires</h4>
-          {turismData.length > 0 && (
+          {turismData?.length > 0 && (
             <button className="font-bold p-1 rounded-2xl border-solid border-[1px] border-blue-500  text-blue-500 text-xs">
               TODOS LOS BENEFICIOS
             </button>
@@ -145,7 +145,7 @@ export default function Home(props: Props) {
           <div>
             <h4 className="text-xl font-medium">Códigos de descuento</h4>
           </div>
-          {voucherData.length > 0 && (
+          {voucherData?.length > 0 && (
             <button className="font-bold p-1 rounded-2xl border-solid border-[1px] border-blue-500  text-blue-500 text-xs">
               TODOS LOS CÓDIGOS
             </button>
@@ -168,7 +168,7 @@ export default function Home(props: Props) {
             }}
             setFetchBy={(val: number) => setVoucherPerPage(val)}
           >
-            {voucherData.map((v, i) => (
+            {voucherData?.map((v, i) => (
               <Card
                 id={v.id}
                 className="!bg-blue-500"
