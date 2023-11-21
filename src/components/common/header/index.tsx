@@ -13,8 +13,6 @@ type Props = {
 const Header = (props: Props) => {
   const { onChangeNameInput, nameInputValue, onClickSearch } = props;
   const internalNameOnChange = (e: any) => {
-    console.log(e.target.value, "target");
-
     onChangeNameInput(e.target.value);
   };
   return (

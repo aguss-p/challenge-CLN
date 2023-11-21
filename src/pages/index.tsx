@@ -12,6 +12,7 @@ import Title from "@/components/common/card/title";
 import PercentagesRow from "@/components/common/percentagesRow";
 import DistanceLabel from "@/components/common/distanceLabel";
 import Button from "@/components/common/card/button";
+import Image from "next/legacy/image";
 
 type Props = {
   tourismAccounts: Array<Benefits>;
@@ -27,11 +28,9 @@ export default function Home(props: Props) {
   const [turismData, setTurismData] = useState([...tourismAccounts]);
   const [turismDataPage, setTurismDataPage] = useState(1);
   const [turismDataPerPage, setTurismDataPerPage] = useState(4);
-  const [loadingBenefits, setLoadingBenefits] = useState(false);
   const [voucherData, setVoucherData] = useState([...vouchers]);
   const [voucherPage, setVoucherPage] = useState(1);
   const [voucherPerPage, setVoucherPerPage] = useState(4);
-  const [loadingVouchers, setLoadingVouchers] = useState(false);
   const [initialLoad, setInitialLoad] = useState(true);
   const [searchByName, setSearchByName] = useState("");
   const [onClickSearch, setOnClickSearch] = useState(false);
@@ -47,10 +46,8 @@ export default function Home(props: Props) {
   );
   useEffect(() => {
     const asyncFetch = async () => {
-      setLoadingBenefits(true);
       const data = await fetchData(benefitsUrl);
       setTurismData(data?.accounts);
-      setLoadingBenefits(false);
     };
     if (!initialLoad) {
       asyncFetch();
@@ -59,10 +56,8 @@ export default function Home(props: Props) {
 
   useEffect(() => {
     const asyncFetch = async () => {
-      setLoadingVouchers(true);
       const data = await fetchData(vouchersUrl);
       setVoucherData(data?.accounts);
-      setLoadingVouchers(false);
     };
     if (!initialLoad) {
       asyncFetch();
@@ -87,7 +82,10 @@ export default function Home(props: Props) {
       />
       <FullScreenSliderDesktop>
         {arrayHardcoded.map((slide, index) => (
-          <img
+          <Image
+            width={1000}
+            height={600}
+            layout="fixed"
             key={index}
             src={slide}
             alt="slider-img"
@@ -120,6 +118,7 @@ export default function Home(props: Props) {
           >
             {turismData?.map((b: Benefits) => (
               <Card
+                id={b.id}
                 key={b.id}
                 img={b.imgUrl}
                 url={b.accountUrl}
@@ -171,6 +170,7 @@ export default function Home(props: Props) {
           >
             {voucherData.map((v, i) => (
               <Card
+                id={v.id}
                 className="!bg-blue-500"
                 key={v.id}
                 img={v.imgUrl}
